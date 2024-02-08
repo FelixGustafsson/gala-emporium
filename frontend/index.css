@@ -1,22 +1,44 @@
 * {
   padding: 0px;
   margin: 0px;
-}
-
-body {
-  padding: 0rem 5rem;
+  text-decoration: none;
 }
 
 nav {
   display: flex;
   background: black;
   justify-content: space-between;
+  height: 4rem;
+  align-items: center;
+  padding: 0rem 3rem;
 }
 
-.logo {
-  font-family: 'Playfair Display', serif;
+main {
+  padding: 0rem 3rem;
 }
 
-.nav-links > a {
+ul {
+  list-style-type: none;
+}
+
+#logo {
   font-family: 'Playfair Display', serif;
+  color: yellow;
+  font-size: x-large;
+}
+
+#nav-links {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+}
+
+#nav-links > a {
+  font-family: 'Playfair Display', serif;
+  color: white;
+  font-size: small;
+}
+
+#main-container {
+  display: flex;
 }

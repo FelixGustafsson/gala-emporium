@@ -1,7 +1,7 @@
-import eventModel from '../models/eventModel.js';
+import eventModel from "../models/eventModel.js";
 
 export default function event(server) {
-  server.post('/api/event', async (req, res) => {
+  server.post("/api/event", async (req, res) => {
     const event = new eventModel({
       name: req.body.name,
       description: req.body.description,
@@ -13,5 +13,9 @@ export default function event(server) {
     });
     const result = await event.save();
     res.json(result);
+  });
+
+  server.get("/api/event", async (req, res) => {
+    res.json(await eventModel.find());
   });
 }

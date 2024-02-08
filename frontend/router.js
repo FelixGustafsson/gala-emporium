@@ -1,12 +1,12 @@
-import home from './pages/home.js';
+import home from "./pages/home.js";
 
 async function route() {
-  switch (location.hash.replace('#', '')) {
-    case '':
-      $('main').html(await home());
+  switch (location.hash.replace("#", "")) {
+    case "":
+      $("main").html(await home());
       break;
     default:
-      console.log('Not found');
+      console.log("404 Page Not found");
   }
 }
 
