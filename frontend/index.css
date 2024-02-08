@@ -1,0 +1,22 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  padding: 0rem 5rem;
+}
+
+nav {
+  display: flex;
+  background: black;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+}
+
+.nav-links > a {
+  font-family: 'Playfair Display', serif;
+}
