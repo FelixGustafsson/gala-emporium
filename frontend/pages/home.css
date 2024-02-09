@@ -1,0 +1,11 @@
+#main-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#calendar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

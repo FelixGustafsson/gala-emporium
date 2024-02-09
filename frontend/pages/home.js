@@ -11,9 +11,12 @@ export default async function home() {
 
   return `
   <div id="main-container">
-  <div>
+  <div id="calendar-container">
+  <h1>EVENT CALENDAR</h1>
   <ul>${html}</ul>
+  <button>Book now</button>
   </div>
+  <img src="../assets/venue.jpg" alt="Our venue"></img>
   </div>
   `;
 }
