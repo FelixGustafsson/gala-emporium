@@ -11,4 +11,8 @@ export default function club(server) {
     const result = await club.save();
     res.json(result);
   });
+
+  server.get('/api/clubs', async (req, res) => {
+    res.json(await clubModel.find());
+  });
 }
