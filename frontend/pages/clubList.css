@@ -1,2 +1,22 @@
-#main-club-list-container {
+#main-club-list-container > h1 {
+  margin-top: 4rem;
+}
+
+#club-container {
+  margin-top: 2rem;
+  width: 40%;
+  height: 20%;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#club-container > div {
+  width: 60%;
+}
+
+#club-container > img {
+  width: 20%;
+  height: 20%;
 }
