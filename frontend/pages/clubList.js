@@ -7,14 +7,19 @@ export default async function clubList() {
   let html = '';
 
   for (let data of result) {
+    const shortDescription = data.description.substring(0, 80);
+    let urlName = data.name;
+    urlName = urlName.toLowerCase().replaceAll(" ", "-");
+
+    console.log(urlName)
     html += `
         <div id="club-container">
           <div>
             <h1>${data.name}</h1>
             <br/>
-            <p>${data.description}</p>
+            <p>${shortDescription}...</p>
             <br/>
-            <button>Read more</button>
+            <button type="button" onclick="window.location.href='http://localhost:3000/#${urlName}'">Read more</button>
           </div>
           <img src="${data.imageURL}" alt="${data.name} picture"></img>
         </div>

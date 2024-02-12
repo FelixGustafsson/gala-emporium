@@ -40,7 +40,7 @@ ul {
   justify-content: space-between;
 }
 
-#nav-links > a {
+#nav-links>a {
   font-family: 'Playfair Display', serif;
   color: white;
   font-size: small;
