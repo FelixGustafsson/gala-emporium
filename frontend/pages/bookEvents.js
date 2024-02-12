@@ -10,7 +10,7 @@ export default async function bookEvents() {
             <h1>${data.name}</h1>
             <p>${data.description}</p>
             <button>Book ${data.name}</button>
-            <img src="../assets/venue.jpg" alt="Our venue"></img>
+            <img src="${data.imageURL}" alt="Event image"></img>
         
           </li>
         </div>
