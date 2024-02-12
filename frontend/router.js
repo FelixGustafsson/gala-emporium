@@ -9,8 +9,10 @@ async function route() {
       break;
     case 'clubs':
       $('main').html(await clubList());
+      break;
     case 'about':
       $('main').html(await about());
+      break;
     default:
       console.log('404 Page Not found');
   }
