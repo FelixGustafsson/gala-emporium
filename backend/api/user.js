@@ -9,7 +9,7 @@ export default function user(server) {
       isClubOwner: req.body.isClubOwner,
     });
     const result = await user.save();
-    res.json(result);
+    res.json({ user: result, message: res.status });
   });
 
   server.get("/api/user", async (req, res) => {
@@ -32,6 +32,16 @@ export default function user(server) {
       } else {
         res.json({ message: "User not found" });
       }
+    }
+  });
+
+  server.delete("/api/login", async (req, res) => {
+    if (req.session.login) {
+      const user = await User.findById(req.session.login);
+      delete req.session.login;
+      res.json({ message: `Logged you out, ${user.username}` });
+    } else {
+      res.json({ message: "No one is logged in, you turnip" });
     }
   });
 }
