@@ -1,5 +1,5 @@
-export default async function club(clubName) {
-    const clubResponse = await fetch(`http://localhost:3000/api/club/:${clubName}`);
+export default async function club(clubID) {
+    const clubResponse = await fetch(`http://localhost:3000/api/club/${clubID}`);
     const club = await clubResponse.json();
     const eventResponse = await fetch("http://localhost:3000/api/event")
     const events = await eventResponse.json();
