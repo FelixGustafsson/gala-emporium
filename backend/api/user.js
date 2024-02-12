@@ -16,6 +16,10 @@ export default function user(server) {
     res.json(await userModel.find());
   });
 
+  server.get("/api/login", async (req, res) => {
+    res.json(req.session);
+  });
+
   server.post("/api/login", async (req, res) => {
     if (req.session.login) {
       res.json({ message: "User already logged in" });
@@ -37,9 +41,9 @@ export default function user(server) {
 
   server.delete("/api/login", async (req, res) => {
     if (req.session.login) {
-      const user = await User.findById(req.session.login);
+      const user = await userModel.findById(req.session.login);
       delete req.session.login;
-      res.json({ message: `Logged you out, ${user.username}` });
+      res.json({ message: `Logged you out, ${user.email}` });
     } else {
       res.json({ message: "No one is logged in, you turnip" });
     }

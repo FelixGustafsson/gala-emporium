@@ -48,7 +48,7 @@ async function createUser() {
     body: JSON.stringify(newUser),
   });
   console.log(response);
-  if ((await response.status) == 200) {
+  if (response.status == 200) {
     $("#registration-text").text("New user successfully registered.");
   } else {
     $("#registration-text").text("Oops, something went wrong.");
@@ -62,14 +62,34 @@ async function newLogin() {
     email: $("[name=login-email]").val(),
     password: $("[name=login-password]").val(),
   };
-  console.log(currentUser);
   let response = await fetch("/api/login", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(currentUser),
   });
   let result = await response.json();
+  $("[name=login-email]").val(" ");
+  $("[name=login-password]").val("");
   $("#login-text").text(result.message);
+  let check = await fetch("/api/login");
+  let userLoggedIn = await check.json();
+  if (userLoggedIn.login) {
+    $("#login-button").text("Logout");
+    $("#login-button").prop("href", "#");
+    $("#login-button").on("click", async function () {
+      let result = await fetch("/api/login", {
+        method: "delete",
+      });
+      console.log(result);
+      if (result.status == 200) {
+        alert("successfully logged out");
+      }
+    });
+  } else {
+    $("#login-button").text("Login");
+    $("#login-button").off("click");
+    $("#login-button").prop("href", "#profile");
+  }
 }
 
 window.newLogin = newLogin;
