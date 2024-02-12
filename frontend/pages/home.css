@@ -1,11 +1,32 @@
 #main-container {
-    display: flex;
-    justify-content: space-between;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
 }
 
-
 #calendar-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#calendar-container > h1 {
+  font-size: 3rem;
+}
+
+#calendar-container > ul {
+  font-size: 2rem;
+}
+
+#main-container > img {
+  width: 40%;
+  height: 40%;
+}
+
+#calendar-container > button {
+  font-size: large;
+  color: white;
+  background: black;
+  border-radius: 0rem 2rem 2rem 0rem;
+  padding: 1rem;
 }
