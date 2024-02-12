@@ -2,6 +2,7 @@ export default async function login() {
   return `
     <div id="main-login-container">
         <div id="create-account-container">
+          <h1>Create Account</h1>
             <form onsubmit="createUser(); return false">
                 <label>Full name</label>
                 <input type="text" name="name" placeholder="Kalle anka..." required/>
@@ -18,12 +19,13 @@ export default async function login() {
         <p id="registration-text"></p>
         <br>
         <div id="login-container">
+          <h1>Log in</h1>
             <form onsubmit="newLogin(); return false">
                 <label>E-mail</label>
                 <input type="email" name="login-email" placeholder="Kalleanka1@gmail.com"/>
                 <label>Password</label>
                 <input type="password" name="login-password" placeholder="qwerty..."/>
-                <button type="submit">Log in</button>
+                <input type="submit" value="Log in"/>
             <form>
             <br>
             <p id="login-text"></p>
