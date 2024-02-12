@@ -21,4 +21,8 @@ export default function club(server) {
       res.send("Club doesn't exist").status(404)
     } else { res.send(result).status(200) }
   })
+
+  server.get('/api/clubs', async (req, res) => {
+    res.json(await clubModel.find());
+  });
 }
