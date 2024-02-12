@@ -1,5 +1,6 @@
 import home from './pages/home.js';
 import clubList from './pages/clubList.js';
+import about from './pages/about.js';
 
 async function route() {
   switch (location.hash.replace('#', '')) {
@@ -8,6 +9,10 @@ async function route() {
       break;
     case 'clubs':
       $('main').html(await clubList());
+      break;
+    case 'about':
+      $('main').html(await about());
+      break;
     default:
       console.log('404 Page Not found');
   }

@@ -1,0 +1,30 @@
+#main-about-container{
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: colomn;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#title{
+   position: absolute;
+   top: 20%;
+   transform: translateY(-50%);
+   padding: 20px; 
+}
+
+#about-text{
+    flex:1;
+    margin-right: 50px;
+}
+
+#assets{
+    flex: 0 0 40%;
+}
+
+#assets img{
+    max-width: 100%;
+    height: auto;
+}
