@@ -1,5 +1,8 @@
 import home from "./pages/home.js";
 import login from "./pages/login.js";
+import clubList from "./pages/clubList.js";
+import about from "./pages/about.js";
+import bookEvents from "./pages/bookEvents.js";
 
 async function route() {
   let check = await fetch("/api/login");
@@ -24,6 +27,15 @@ async function route() {
   switch (location.hash.replace("#", "")) {
     case "":
       $("main").html(await home());
+      break;
+    case "clubs":
+      $("main").html(await clubList());
+      break;
+    case "about":
+      $("main").html(await about());
+      break;
+    case "book-events":
+      $("main").html(await bookEvents());
       break;
     case "profile":
       console.log("hej");
