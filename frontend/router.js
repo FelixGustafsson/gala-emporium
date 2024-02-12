@@ -1,17 +1,17 @@
-import home from './pages/home.js';
-import login from './pages/login.js';
+import home from "./pages/home.js";
+import login from "./pages/login.js";
 
 async function route() {
-  switch (location.hash.replace('#', '')) {
-    case '':
-      $('main').html(await home());
+  switch (location.hash.replace("#", "")) {
+    case "":
+      $("main").html(await home());
       break;
-    case 'login':
-      console.log('hej');
-      $('main').html(login());
+    case "profile":
+      console.log("hej");
+      $("main").html(await login());
       break;
     default:
-      console.log('404 Page Not found');
+      console.log("404 Page Not found");
   }
 }
 
