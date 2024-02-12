@@ -1,3 +1,4 @@
+import { Db } from 'mongodb';
 import clubModel from '../models/clubModel.js';
 
 export default function club(server) {
@@ -11,4 +12,13 @@ export default function club(server) {
     const result = await club.save();
     res.json(result);
   });
+
+  server.get('/api/club/:id', async (req, res) => {
+    let collection = await Db.collection("clubs");
+    let query = { _id: ObjectId(req.params.id) };
+    let result = await collection.findOne(query);
+    if (!result) {
+      res.send("Club doesn't exist").status(404)
+    } else { res.send(result).status(200) }
+  })
 }
