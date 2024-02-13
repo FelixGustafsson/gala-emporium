@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import clubModel from './clubModel.js';
 
 const eventSchema = mongoose.Schema({
   name: String,
@@ -9,7 +10,10 @@ const eventSchema = mongoose.Schema({
   endDate: String,
   tickets: Number,
   bookings: [],
-  club: [],
+  club: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: clubModel,
+  },
 });
 
 const eventModel = mongoose.model('events', eventSchema);

@@ -12,6 +12,13 @@ export default function club(server) {
     res.json(result);
   });
 
+  server.get('/api/club/:id', async (req, res) => {
+    let result = await clubModel.findById(req.params.id);
+    if (!result) {
+      res.send("Club doesn't exist").status(404)
+    } else { res.send(result).status(200) }
+  })
+
   server.get('/api/clubs', async (req, res) => {
     res.json(await clubModel.find());
   });

@@ -2,6 +2,8 @@
 @import url('./pages/bookEvents.css');
 @import url('./pages/clubList.css');
 @import url('./pages/about.css');
+@import url('./pages/club.css');
+
 @import url('./pages/login.css');
 
 * {
@@ -43,11 +45,12 @@ ul {
   justify-content: space-between;
 }
 
-#nav-links>a, #logout-button  {
+#nav-links > a, #logout-button  {
   font-family: 'Playfair Display', serif;
   color: white;
   font-size: small;
 }
+
 
 #logout-button {
   cursor: pointer;
