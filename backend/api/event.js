@@ -1,21 +1,22 @@
-import eventModel from "../models/eventModel.js";
+import eventModel from '../models/eventModel.js';
 
 export default function event(server) {
-  server.post("/api/event", async (req, res) => {
+  server.post('/api/event', async (req, res) => {
     const event = new eventModel({
       name: req.body.name,
       description: req.body.description,
       imageURL: req.body.imageURL,
-      pricePerTicket: req.body.price,
+      pricePerTicket: req.body.pricePerTicket,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
       tickets: req.body.tickets,
+      club: req.body.club,
     });
     const result = await event.save();
     res.json(result);
   });
 
-  server.get("/api/event", async (req, res) => {
+  server.get('/api/event', async (req, res) => {
     res.json(await eventModel.find());
   });
 }
