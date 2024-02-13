@@ -1,16 +1,24 @@
-#event-container>li>img {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    height: 30%;
-    margin-left: 500px;
-    align-items: center;
+li > img {
+  width: 25%;
+  height: 25%;
 }
 
-#event-container>li>button {
-    font-size: large;
-    color: white;
-    background: black;
-    border-radius: 0rem 2rem 2rem 0rem;
-    padding: 1rem;
+li > div {
+  width: 50%;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+
+li > div > button {
+  font-size: large;
+  color: white;
+  background: black;
+  border-radius: 2rem;
+  border: none;
+  padding: 0.5rem 2rem;
+  margin-top: 1rem;
 }
