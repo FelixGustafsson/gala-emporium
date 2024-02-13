@@ -74,21 +74,18 @@ async function newLogin() {
   let check = await fetch("/api/login");
   let userLoggedIn = await check.json();
   if (userLoggedIn.login) {
-    $("#login-button").text("Logout");
-    $("#login-button").prop("href", "#");
-    $("#login-button").on("click", async function () {
+    $("#logout-button").show();
+    $("#logout-button").off("click");
+    $("#logout-button").on("click", async function () {
       let result = await fetch("/api/login", {
         method: "delete",
       });
       console.log(result);
       if (result.status == 200) {
         alert("successfully logged out");
+        $("#logout-button").hide();
       }
     });
-  } else {
-    $("#login-button").text("Login");
-    $("#login-button").off("click");
-    $("#login-button").prop("href", "#profile");
   }
 }
 
