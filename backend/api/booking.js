@@ -1,7 +1,7 @@
-import bookingModel from '../models/bookingModel.js';
+import bookingModel from "../models/bookingModel.js";
 
 export default function club(server) {
-  server.post('/api/booking', async (req, res) => {
+  server.post("/api/booking/:id", async (req, res) => {
     const booking = new bookingModel({
       user: req.body.user,
       event: req.body.event,

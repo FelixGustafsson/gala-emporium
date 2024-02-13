@@ -1,7 +1,7 @@
 export default async function bookEvents() {
-  const response = await fetch('http://localhost:3000/api/event');
+  const response = await fetch("http://localhost:3000/api/event");
   const result = await response.json();
-  let html = '';
+  let html = "";
 
   for (let data of result) {
     html += ` 
