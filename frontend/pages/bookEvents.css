@@ -1,19 +1,19 @@
-li > img {
+#event-li > img {
   width: 25%;
   height: 25%;
 }
 
-li > div {
+#event-li > div {
   width: 50%;
 }
 
-li {
+#event-li {
   display: flex;
   justify-content: space-between;
   margin-top: 4rem;
 }
 
-li > div > button {
+#event-li > div > button {
   font-size: large;
   color: white;
   background: black;

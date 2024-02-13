@@ -5,7 +5,7 @@ export default async function bookEvents() {
 
   for (let data of result) {
     html += ` 
-          <li>
+          <li id="event-li">
             <div>
               <h2>${data.name}</h2>
               <p>${data.description}</p>
