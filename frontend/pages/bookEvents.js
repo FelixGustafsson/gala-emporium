@@ -52,7 +52,8 @@ export default async function bookEvents() {
     `;
 }
 
-export async function bookEvent(id) {
+// export
+async function bookEvent(id) {
   let response = await fetch(`/api/event/${id}`);
   let result = await response.json();
   console.log(result);
