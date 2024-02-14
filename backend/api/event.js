@@ -29,12 +29,14 @@ export default function event(server) {
     }
   });
 
-  server.patch("api/event/:id", async (req, res) => {
+  /*server.patch("api/event/:id", async (req, res) => {
     let result = await eventModel.findById(req.params.id);
     if (!result) {
       res.send("Event not found").status(404);
     } else {
       result.tickets = req.body.tickets;
+      result.save();
+      console.log(res.json);
     }
-  });
+  });*/
 }

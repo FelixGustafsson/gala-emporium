@@ -58,3 +58,7 @@ ul {
   top: 1.4rem;
   right:1.2rem;
 }
+
+button{
+  cursor: pointer;
+}

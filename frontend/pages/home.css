@@ -23,7 +23,7 @@
   height: 40%;
 }
 
-#calendar-container > button {
+#calendar-container > button, #book-now-button {
   font-size: large;
   color: white;
   background: black;
