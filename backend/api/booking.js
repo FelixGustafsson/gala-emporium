@@ -22,4 +22,18 @@ export default function club(server) {
       res.json({ message: "Out of tickets" });
     }
   });
+
+  server.delete("/api/booking/:id", async (req, res) => {
+    //finds the booking and the user
+    const booking = await bookingModel.findById(req.params.id);
+    const user = await userModel.findById(booking.user[0]);
+    //at the moment, there is no code to remove the booking from the user's bookedEvents array
+    // code needed here
+
+    //the code below removes the booking object
+    const cancellation = await bookingModel.findByIdAndDelete({
+      _id: req.params.id,
+    });
+    await res.json(cancellation);
+  });
 }
