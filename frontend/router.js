@@ -15,10 +15,10 @@ async function route() {
       let result = await fetch("/api/login", {
         method: "delete",
       });
-      console.log(result);
       if (result.status == 200) {
         alert("successfully logged out");
         $("#logout-button").hide();
+        location.reload();
       }
     });
   } else {
@@ -47,7 +47,6 @@ async function route() {
       $("main").html(await bookEvents());
       break;
     case "profile":
-      console.log("hej");
       $("main").html(await login());
       break;
     case "havana-nights":
