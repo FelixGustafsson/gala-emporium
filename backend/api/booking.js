@@ -25,12 +25,24 @@ export default function club(server) {
 
   server.delete("/api/booking/:id", async (req, res) => {
     //finds the booking and the user
+    console.log("request id " + req.params.id);
     const booking = await bookingModel.findById(req.params.id);
+    const event = await eventModel.findById(booking.event[0]);
     const user = await userModel.findById(booking.user[0]);
     //at the moment, there is no code to remove the booking from the user's bookedEvents array
     // code needed here
-
-    //the code below removes the booking object
+    let array = user.bookedEvents;
+    for (let i = array.length - 1; i >= 0; i--) {
+      if (array[i]._id == req.params.id) {
+        let tickets = array[i].numberOfTickets;
+        console.log(tickets);
+        console.log(event.tickets);
+        event.tickets += tickets;
+        event.save();
+        array.splice(i, 1);
+      }
+    }
+    user.save();
     const cancellation = await bookingModel.findByIdAndDelete({
       _id: req.params.id,
     });
