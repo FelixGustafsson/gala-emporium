@@ -76,24 +76,10 @@ async function newLogin() {
     body: JSON.stringify(currentUser),
   });
   let result = await response.json();
-  $("[name=login-email]").val(" ");
+  $("[name=login-email]").val("");
   $("[name=login-password]").val("");
   $("#login-text").text(result.message);
-  let check = await fetch("/api/login");
-  let userLoggedIn = await check.json();
-  if (userLoggedIn.login) {
-    $("#logout-button").show();
-    $("#logout-button").off("click");
-    $("#logout-button").on("click", async function () {
-      let result = await fetch("/api/login", {
-        method: "delete",
-      });
-      console.log(result);
-      if (result.status == 200) {
-        alert("successfully logged out");
-        $("#logout-button").hide();
-      }
-    });
+  if (result.message == "Login successful") {
     location.reload();
   }
 }
