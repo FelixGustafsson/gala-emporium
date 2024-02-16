@@ -1,10 +1,10 @@
-import profile from './profile.js';
+import profile from "./profile.js";
 
 export default async function login() {
-  let check = await fetch('/api/login');
+  let check = await fetch("/api/login");
   let userLoggedIn = await check.json();
   if (userLoggedIn.login) {
-    $('main').html(await profile());
+    $("main").html(await profile());
   } else {
     return `
     <div id="main-login-container">
@@ -18,9 +18,9 @@ export default async function login() {
                 <label>Password</label>
                 <input type="password" name="password" placeholder="qwerty..." required/>
                 <label>Check the box if you are a club owner:</label>
-                <input type="checkbox" id="isClubOwner" name="isClubOwner">
-                <input type="submit" value="Create account">
-                </form>
+                <input type="checkbox" id="isClubOwner" name="isClubOwner"/>
+                <input type="submit" value="Create account"/>
+            </form>
         </div>
         <br>
         <p id="registration-text"></p>
@@ -45,21 +45,21 @@ export default async function login() {
 
 async function createUser() {
   let newUser = {
-    name: $('[name=name]').val(),
-    email: $('[name=email]').val(),
-    password: $('[name=password]').val(),
-    isClubOwner: $('#isClubOwner').is(':checked'),
+    name: $("[name=name]").val(),
+    email: $("[name=email]").val(),
+    password: $("[name=password]").val(),
+    isClubOwner: $("#isClubOwner").is(":checked"),
   };
-  let response = await fetch('/api/user', {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
+  let response = await fetch("/api/user", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newUser),
   });
   console.log(response);
   if (response.status == 200) {
-    $('#registration-text').text('New user successfully registered.');
+    $("#registration-text").text("New user successfully registered.");
   } else {
-    $('#registration-text').text('Oops, something went wrong.');
+    $("#registration-text").text("Oops, something went wrong.");
   }
 }
 
@@ -67,31 +67,31 @@ window.createUser = createUser;
 
 async function newLogin() {
   let currentUser = {
-    email: $('[name=login-email]').val(),
-    password: $('[name=login-password]').val(),
+    email: $("[name=login-email]").val(),
+    password: $("[name=login-password]").val(),
   };
-  let response = await fetch('/api/login', {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
+  let response = await fetch("/api/login", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(currentUser),
   });
   let result = await response.json();
-  $('[name=login-email]').val(' ');
-  $('[name=login-password]').val('');
-  $('#login-text').text(result.message);
-  let check = await fetch('/api/login');
+  $("[name=login-email]").val(" ");
+  $("[name=login-password]").val("");
+  $("#login-text").text(result.message);
+  let check = await fetch("/api/login");
   let userLoggedIn = await check.json();
   if (userLoggedIn.login) {
-    $('#logout-button').show();
-    $('#logout-button').off('click');
-    $('#logout-button').on('click', async function () {
-      let result = await fetch('/api/login', {
-        method: 'delete',
+    $("#logout-button").show();
+    $("#logout-button").off("click");
+    $("#logout-button").on("click", async function () {
+      let result = await fetch("/api/login", {
+        method: "delete",
       });
       console.log(result);
       if (result.status == 200) {
-        alert('successfully logged out');
-        $('#logout-button').hide();
+        alert("successfully logged out");
+        $("#logout-button").hide();
       }
     });
     location.reload();
@@ -99,4 +99,3 @@ async function newLogin() {
 }
 
 window.newLogin = newLogin;
-//window.loginAndReload = loginAndReload;
