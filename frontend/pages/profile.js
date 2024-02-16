@@ -1,10 +1,10 @@
 export default async function profile() {
-  const userResponse = await fetch("/api/login");
+  const userResponse = await fetch('/api/login');
   const user = await userResponse.json();
   const profileUserResponse = await fetch(`/api/user/${user.login}`);
   const profileUser = await profileUserResponse.json();
 
-  let html = "";
+  let html = '';
 
   if (profileUser.isClubOwner) {
     html += `
@@ -15,7 +15,7 @@ export default async function profile() {
         <h1>Welcome ${profileUser.name}</h1>
         <br/>
         <h2>Create a new event:</h2>
-        <form id="event-form" onsubmit="createNewEvent(); return false">
+        <form id="event-form" onsubmit="createNewEvent('${profileUser.club}'); return false">
           <label>Name<input name="event-name" placeholder="Enter event name" required/></label>
       
           <label>Start date/time<input type="datetime-local" name="start-date" required/></label>
@@ -23,6 +23,8 @@ export default async function profile() {
           <label>End date/time<input type="datetime-local" name="end-date" required/></label>
           
           <label>Description<input type="text" name="description" required/></label>
+
+          <label>Image URL<input type="text" name="imageURL" required/></label>
           
           <label>Price per ticket<input type="number" name="price" required/></label>
           
@@ -60,35 +62,35 @@ export default async function profile() {
 
 async function cancelBooking(id) {
   let response = await fetch(`/api/booking/${id}`, {
-    method: "delete",
+    method: 'delete',
   });
   let result = response.json();
   console.log(result);
   location.reload();
 }
 
-async function createNewEvent() {
+async function createNewEvent(clubID) {
   let newEvent = {
-    name: $("[name=event-name]").val(),
-    description: $("[name=description]").val(),
-    imageURL: "",
-    pricePerTicket: $("[name=price]").val(),
-    startDate: $("[name=start-date]").val(),
-    endDate: $("[name=end-date]").val(),
+    name: $('[name=event-name]').val(),
+    description: $('[name=description]').val(),
+    imageURL: $('[name=imageURL]').val(),
+    pricePerTicket: $('[name=price]').val(),
+    startDate: $('[name=start-date]').val(),
+    endDate: $('[name=end-date]').val(),
     tickets: 500,
-    club: "65cdd7fea572e848459037c3",
+    club: clubID,
   };
-  let response = await fetch("/api/event", {
-    method: "post",
-    headers: { "Content-Type": "application/json" },
+  let response = await fetch('/api/event', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newEvent),
   });
   console.log(response);
-  $("#event-form")[0].reset();
+  $('#event-form')[0].reset();
   if (response.status == 200) {
-    $("#registration-text").text("New event created!");
+    $('#registration-text').text('New event created!');
   } else {
-    $("#registration-text").text("Oops, something went wrong.");
+    $('#registration-text').text('Oops, something went wrong.');
   }
 }
 
