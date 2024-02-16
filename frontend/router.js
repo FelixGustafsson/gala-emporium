@@ -50,6 +50,9 @@ async function route() {
       console.log("hej");
       $("main").html(await login());
       break;
+    case "havana-nights":
+      $("main").html(await club("65cf5915087ed52489e03aa1"));
+      break;
     default:
       console.log("404 Page Not found");
   }
