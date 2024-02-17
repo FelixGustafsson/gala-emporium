@@ -4,6 +4,7 @@ import clubList from './pages/clubList.js';
 import about from './pages/about.js';
 import club from './pages/club.js';
 import bookEvents from './pages/bookEvents.js';
+import bookingConfirmation from './pages/bookingConfirmation.js';
 
 async function route() {
   let check = await fetch('/api/login');
@@ -46,6 +47,9 @@ async function route() {
     case 'profile':
       console.log('hej');
       $('main').html(await login());
+      break;
+    case 'confirmation':
+      $('main').html(await bookingConfirmation());
       break;
     default:
       console.log('404 Page Not found');
