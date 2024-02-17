@@ -1,0 +1,43 @@
+#event-form {
+  width: 40rem;
+}
+
+#event-form > label > input {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.2rem;
+}
+
+#main-profile-container {
+  display: flex;
+}
+
+#profile-club-events-container {
+  margin-left: 8rem;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+  ul {
+    width: 30rem;
+  }
+
+  li {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 30%;
+      height: 30%;
+    }
+    button {
+      margin-top: 1rem;
+      width: 10rem;
+      font-size: large;
+      color: white;
+      background: black;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.3rem;
+    }
+  }
+}

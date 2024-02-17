@@ -7,11 +7,25 @@ export default async function profile() {
   let html = '';
 
   if (profileUser.isClubOwner) {
-    html += `
-    <div>Club Owner (tbc)</div>
-    `;
+    const eventsResponse = await fetch('/api/event');
+    const events = await eventsResponse.json();
+
+    for (let data of events) {
+      if (data.club === profileUser.club) {
+        //add delete method for the event both in backend and onCick at the button
+        html += `
+        <li>
+          <h2>${data.name}</h2>
+          <p>${data.description}</p>
+          <img src="${data.imageURL}"/>
+          <button>Delete event</button>
+        </li>
+      `;
+      }
+    }
     return `
     <div id="main-profile-container">
+      <div>
         <h1>Welcome ${profileUser.name}</h1>
         <br/>
         <h2>Create a new event:</h2>
@@ -22,7 +36,7 @@ export default async function profile() {
           
           <label>End date/time<input type="datetime-local" name="end-date" required/></label>
           
-          <label>Description<input type="text" name="description" required/></label>
+          <label>Description<input id="description-input" type="text" name="description" required/></label>
 
           <label>Image URL<input type="text" name="imageURL" required/></label>
           
@@ -32,6 +46,12 @@ export default async function profile() {
         </form>
         <br>
         <p id="registration-text"></p>
+      </div>
+
+      <div id="profile-club-events-container">
+        <h1>Your events:</h1>
+        <ul>${html}</ul>
+      </div>
     </div>
         `;
   } else {

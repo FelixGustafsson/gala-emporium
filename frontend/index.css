@@ -3,7 +3,7 @@
 @import url('./pages/clubList.css');
 @import url('./pages/about.css');
 @import url('./pages/club.css');
-
+@import url('./pages/profile.css');
 @import url('./pages/login.css');
 
 * {
@@ -45,20 +45,20 @@ ul {
   justify-content: space-between;
 }
 
-#nav-links > a, #logout-button  {
+#nav-links > a,
+#logout-button {
   font-family: 'Playfair Display', serif;
   color: white;
   font-size: small;
 }
 
-
 #logout-button {
   cursor: pointer;
   position: absolute;
   top: 1.4rem;
-  right:1.2rem;
+  right: 1.2rem;
 }
 
-button{
+button {
   cursor: pointer;
 }
