@@ -48,9 +48,6 @@ async function route() {
       console.log('hej');
       $('main').html(await login());
       break;
-    case 'confirmation':
-      $('main').html(await bookingConfirmation());
-      break;
     default:
       console.log('404 Page Not found');
   }
