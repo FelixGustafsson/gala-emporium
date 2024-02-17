@@ -1,7 +1,7 @@
-import eventModel from "../models/eventModel.js";
+import eventModel from '../models/eventModel.js';
 
 export default function event(server) {
-  server.post("/api/event", async (req, res) => {
+  server.post('/api/event', async (req, res) => {
     const event = new eventModel({
       name: req.body.name,
       description: req.body.description,
@@ -16,16 +16,23 @@ export default function event(server) {
     res.json(result);
   });
 
-  server.get("/api/event", async (req, res) => {
+  server.get('/api/event', async (req, res) => {
     res.json(await eventModel.find());
   });
 
-  server.get("/api/event/:id", async (req, res) => {
+  server.get('/api/event/:id', async (req, res) => {
     let result = await eventModel.findById(req.params.id);
     if (!result) {
-      res.send("Event not found").status(404);
+      res.send('Event not found').status(404);
     } else {
       res.send(result).status(200);
     }
+  });
+
+  server.delete('/api/event/:id', async (req, res) => {
+    const deletedEvent = await eventModel.findByIdAndDelete({
+      _id: req.params.id,
+    });
+    await res.json(deletedEvent);
   });
 }

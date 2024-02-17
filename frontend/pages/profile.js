@@ -18,7 +18,7 @@ export default async function profile() {
           <h2>${data.name}</h2>
           <p>${data.description}</p>
           <img src="${data.imageURL}"/>
-          <button>Delete event</button>
+          <button onclick="deleteEvent('${data._id}')">Delete event</button>
         </li>
       `;
       }
@@ -89,6 +89,13 @@ async function cancelBooking(id) {
   location.reload();
 }
 
+async function deleteEvent(id) {
+  let response = await fetch(`/api/event/${id}`, {
+    method: 'delete',
+  });
+  location.reload();
+}
+
 async function createNewEvent(clubID) {
   let newEvent = {
     name: $('[name=event-name]').val(),
@@ -116,3 +123,4 @@ async function createNewEvent(clubID) {
 
 window.cancelBooking = cancelBooking;
 window.createNewEvent = createNewEvent;
+window.deleteEvent = deleteEvent;
