@@ -38,6 +38,9 @@ async function route() {
     case "kalle-anka-klubb":
       $("main").html(await club("65c8dbc4a1c8cb7e6dad9f04"));
       break;
+    case "havana-nights":
+      $("main").html(await club("65cf5915087ed52489e03aa1"));
+      break;
     case "klubb-lille-skutt":
       $("main").html(await club("65c8dd2ef830e97c1bc0e406"));
       break;
