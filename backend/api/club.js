@@ -24,4 +24,11 @@ export default function club(server) {
   server.get("/api/club", async (req, res) => {
     res.json(await clubModel.find());
   });
+
+  server.patch('/api/club/:id', async (req, res) => {
+    const result = await clubModel.findByIdAndUpdate({ _id: req.params.id, }, {
+      colorTheme: req.body.colorTheme
+    })
+    res.send(result).status(200)
+  })
 }
