@@ -34,7 +34,7 @@ export default async function login() {
         <br>
         <div id="login-container">
           <h1>Log in</h1>
-            <form onsubmit="newLogin(); id="login-form" return false">
+            <form id="login-form" onsubmit="newLogin(); return false">
                 <label>E-mail</label>
                 <input type="email" name="login-email" placeholder="Kalleanka1@gmail.com"/>
                 <label>Password</label>
