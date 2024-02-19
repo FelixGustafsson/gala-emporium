@@ -1,7 +1,7 @@
 export default async function home() {
-  const response = await fetch('http://localhost:3000/api/event');
+  const response = await fetch("http://localhost:3000/api/event");
   const result = await response.json();
-  let html = '';
+  let html = "";
 
   for (let data of result) {
     let date = `${data.startDate}`;
@@ -10,7 +10,7 @@ export default async function home() {
     let newEndDate = endDate.slice(16, 21);
 
     html += `
-        <li>${data.name}:  ${newDate}-${newEndDate}</li>
+        <li>${data.name}: <br/> ${newDate}-${newEndDate}</li>
       `;
   }
 
