@@ -46,6 +46,21 @@ export default async function profile() {
         </form>
         <br>
         <p id="registration-text"></p>
+
+        <div id="color-theme-form-container">
+          <form onsubmit="updateColorTheme('${profileUser.club}'); return false" id="color-theme-form">
+          <h3>Choose you clubs color theme:</h3>
+          
+          <label>Red</label>
+          <input type="radio" value="1" name="colorTheme" id="themeRed"/>
+          <label>Green</label>
+          <input type="radio" value="2" name="colorTheme" id="themeGreen"/>
+          <label>Blue</label>
+          <input type="radio" value="3" name="colorTheme" id="themeBlue"/>
+          <input type="submit" value="Choose"/>
+          
+          </form>
+        </div>
       </div>
 
       <div id="profile-club-events-container">
@@ -96,6 +111,19 @@ async function deleteEvent(id) {
   location.reload();
 }
 
+async function updateColorTheme(id) {
+  const theme = $('[name=colorTheme]:checked').val();
+
+  console.log(theme)
+  let response = await fetch(`/api/club/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ colorTheme: theme })
+  })
+
+  console.log(response)
+}
+
 async function createNewEvent(clubID) {
   let newEvent = {
     name: $('[name=event-name]').val(),
@@ -124,3 +152,4 @@ async function createNewEvent(clubID) {
 window.cancelBooking = cancelBooking;
 window.createNewEvent = createNewEvent;
 window.deleteEvent = deleteEvent;
+window.updateColorTheme = updateColorTheme;
