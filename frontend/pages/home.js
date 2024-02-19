@@ -1,7 +1,6 @@
 export default async function home() {
   const response = await fetch('http://localhost:3000/api/event');
   const result = await response.json();
-  console.log(result);
   let html = '';
 
   for (let data of result) {

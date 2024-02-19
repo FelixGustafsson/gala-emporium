@@ -3,7 +3,7 @@
 @import url('./pages/clubList.css');
 @import url('./pages/about.css');
 @import url('./pages/club.css');
-@import url('./pages/bookingConfirmation.css');
+@import url('./pages/bookingConfirmation.css');@import url('./pages/profile.css');
 @import url('./pages/login.css');
 
 * {

@@ -1,5 +1,12 @@
+import profile from "./profile.js";
+
 export default async function login() {
-  return `
+  let check = await fetch("/api/login");
+  let userLoggedIn = await check.json();
+  if (userLoggedIn.login) {
+    $("main").html(await profile());
+  } else {
+    return `
     <div id="main-login-container">
         <div id="create-account-container">
           <h1>Create Account</h1>
@@ -11,9 +18,9 @@ export default async function login() {
                 <label>Password</label>
                 <input type="password" name="password" placeholder="qwerty..." required/>
                 <label>Check the box if you are a club owner:</label>
-                <input type="checkbox" id="isClubOwner" name="isClubOwner">
-                <input type="submit" value="Create account">
-                </form>
+                <input type="checkbox" id="isClubOwner" name="isClubOwner"/>
+                <input type="submit" value="Create account"/>
+            </form>
         </div>
         <br>
         <p id="registration-text"></p>
@@ -33,6 +40,7 @@ export default async function login() {
     </div>
     
     `;
+  }
 }
 
 async function createUser() {
@@ -68,24 +76,11 @@ async function newLogin() {
     body: JSON.stringify(currentUser),
   });
   let result = await response.json();
-  $("[name=login-email]").val(" ");
+  $("[name=login-email]").val("");
   $("[name=login-password]").val("");
   $("#login-text").text(result.message);
-  let check = await fetch("/api/login");
-  let userLoggedIn = await check.json();
-  if (userLoggedIn.login) {
-    $("#logout-button").show();
-    $("#logout-button").off("click");
-    $("#logout-button").on("click", async function () {
-      let result = await fetch("/api/login", {
-        method: "delete",
-      });
-      console.log(result);
-      if (result.status == 200) {
-        alert("successfully logged out");
-        $("#logout-button").hide();
-      }
-    });
+  if (result.message == "Login successful") {
+    location.reload();
   }
 }
 

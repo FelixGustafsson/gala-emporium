@@ -7,6 +7,7 @@ export default function user(server) {
       email: req.body.email,
       password: req.body.password,
       isClubOwner: req.body.isClubOwner,
+      club: req.body.club,
     });
     const result = await user.save();
     res.json({ user: result, message: res.status });
@@ -14,6 +15,15 @@ export default function user(server) {
 
   server.get('/api/user', async (req, res) => {
     res.json(await userModel.find());
+  });
+
+  server.get('/api/user/:id', async (req, res) => {
+    let result = await userModel.findById(req.params.id);
+    if (!result) {
+      res.send('User not found').status(404);
+    } else {
+      res.send(result).status(200);
+    }
   });
 
   server.get('/api/user/:id', async (req, res) => {
@@ -35,7 +45,7 @@ export default function user(server) {
       if (user) {
         req.session.login = user._id;
         res.json({
-          message: `Login as ${user.email} successful`,
+          message: `Login successful`,
         });
       } else {
         res.json({ message: 'User not found' });
