@@ -6,11 +6,17 @@ export default async function login() {
   if (userLoggedIn.login) {
     $("main").html(await profile());
   } else {
+    let clubList = "";
+    let response = await fetch("/api/club");
+    let data = await response.json();
+    for (let row of data) {
+      clubList += `<option value=${row._id}>${row.name}</option>`;
+    }
     return `
     <div id="main-login-container">
         <div id="create-account-container">
           <h1>Create Account</h1>
-            <form onsubmit="createUser(); return false">
+            <form id="create-account" onsubmit="createUser(); return false">
                 <label>Full name</label>
                 <input type="text" name="name" placeholder="Kalle anka..." required/>
                 <label>E-mail</label>
@@ -18,7 +24,8 @@ export default async function login() {
                 <label>Password</label>
                 <input type="password" name="password" placeholder="qwerty..." required/>
                 <label>Check the box if you are a club owner:</label>
-                <input type="checkbox" id="isClubOwner" name="isClubOwner"/>
+                <input type="checkbox" id="isClubOwner" name="isClubOwner" onchange="checkBoxSwitch()"/>
+                <select id="clubList"  style="display:none" name="clubList">${clubList}</select>
                 <input type="submit" value="Create account"/>
             </form>
         </div>
@@ -27,7 +34,7 @@ export default async function login() {
         <br>
         <div id="login-container">
           <h1>Log in</h1>
-            <form onsubmit="newLogin(); return false">
+            <form onsubmit="newLogin(); id="login-form" return false">
                 <label>E-mail</label>
                 <input type="email" name="login-email" placeholder="Kalleanka1@gmail.com"/>
                 <label>Password</label>
@@ -43,6 +50,16 @@ export default async function login() {
   }
 }
 
+async function checkBoxSwitch() {
+  if ($("[name=isClubOwner]:checked").val()) {
+    $("#clubList").show();
+  } else {
+    $("#clubList").hide();
+  }
+}
+
+window.checkBoxSwitch = checkBoxSwitch;
+
 async function createUser() {
   let newUser = {
     name: $("[name=name]").val(),
@@ -50,6 +67,9 @@ async function createUser() {
     password: $("[name=password]").val(),
     isClubOwner: $("#isClubOwner").is(":checked"),
   };
+  if ($("#isClubOwner").is(":checked")) {
+    newUser.club = $("[name=clubList]").val();
+  }
   let response = await fetch("/api/user", {
     method: "post",
     headers: { "Content-Type": "application/json" },

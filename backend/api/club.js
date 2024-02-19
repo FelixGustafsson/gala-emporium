@@ -1,7 +1,7 @@
-import clubModel from '../models/clubModel.js';
+import clubModel from "../models/clubModel.js";
 
 export default function club(server) {
-  server.post('/api/club', async (req, res) => {
+  server.post("/api/club", async (req, res) => {
     const club = new clubModel({
       name: req.body.name,
       description: req.body.description,
@@ -12,14 +12,16 @@ export default function club(server) {
     res.json(result);
   });
 
-  server.get('/api/club/:id', async (req, res) => {
+  server.get("/api/club/:id", async (req, res) => {
     let result = await clubModel.findById(req.params.id);
     if (!result) {
-      res.send("Club doesn't exist").status(404)
-    } else { res.send(result).status(200) }
-  })
+      res.send("Club doesn't exist").status(404);
+    } else {
+      res.send(result).status(200);
+    }
+  });
 
-  server.get('/api/clubs', async (req, res) => {
+  server.get("/api/club", async (req, res) => {
     res.json(await clubModel.find());
   });
 }
