@@ -1,3 +1,5 @@
+import bookingConfirmation from './bookingConfirmation.js';
+
 export default async function bookEvent(id) {
   let response = await fetch(`/api/event/${id}`);
   let result = await response.json();
@@ -41,6 +43,8 @@ async function newBooking(id) {
     ? $('#booking-text').text('Tickets successfully booked!')
     : $('#booking-text').text('Something went wrong, please try again later.');
   $('#tickets').val('');
+
+  bookingConfirmation(currentBooking);
 }
 
 window.bookEvent = bookEvent;

@@ -1,9 +1,10 @@
-import home from "./pages/home.js";
-import login from "./pages/login.js";
-import clubList from "./pages/clubList.js";
-import about from "./pages/about.js";
-import club from "./pages/club.js";
-import bookEvents from "./pages/bookEvents.js";
+import home from './pages/home.js';
+import login from './pages/login.js';
+import clubList from './pages/clubList.js';
+import about from './pages/about.js';
+import club from './pages/club.js';
+import bookEvents from './pages/bookEvents.js';
+import bookingConfirmation from './pages/bookingConfirmation.js';
 
 async function route() {
   let check = await fetch("/api/login");

@@ -27,6 +27,11 @@ export default function user(server) {
   });
 
   server.get('/api/login', async (req, res) => {
+  server.get('/api/user/:id', async (req, res) => {
+    res.json(await userModel.findById(req.params.id));
+  });
+
+  server.get('/api/login', async (req, res) => {
     res.json(req.session);
   });
 
