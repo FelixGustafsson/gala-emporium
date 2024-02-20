@@ -32,7 +32,7 @@ export default async function bookEvents() {
 
   return `
     <div id="main-container">
-    <div id="calendar-container">
+    <div id="booking-calendar-container">
     <h1>EVENT CALENDAR</h1>
     <ul>${html}</ul>
     `;
