@@ -13,16 +13,12 @@ export default async function clubList() {
 
     console.log(urlName)
     html += `
-        <div id="club-container">
-          <div>
+          <div class="club-info">
             <h1>${data.name}</h1>
-            <br/>
             <p>${shortDescription}...</p>
-            <br/>
+            <img src="${data.imageURL}" alt="${data.name} picture"></img>
             <button type="button" onclick="window.location.href='http://localhost:3000/#${urlName}'">Read more</button>
           </div>
-          <img src="${data.imageURL}" alt="${data.name} picture"></img>
-        </div>
       `;
   }
 
@@ -30,7 +26,8 @@ export default async function clubList() {
     <div id="main-club-list-container">
         <h1>OUR CLUBS</h1>
         <br/>
-        <div>${html}</div>
+        <div id="club-container">
+        ${html}</div>
     </div>
     `;
 }
