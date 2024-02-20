@@ -82,7 +82,7 @@ export default async function profile() {
     `;
     }
     return `
-    <div id="main-profile-container">
+    <div id="main-profile-container-privateperson">
         <h1>Welcome ${profileUser.name}</h1>
         <br/>
         <br/>
@@ -114,14 +114,14 @@ async function deleteEvent(id) {
 async function updateColorTheme(id) {
   const theme = $('[name=colorTheme]:checked').val();
 
-  console.log(theme)
+  console.log(theme);
   let response = await fetch(`/api/club/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ colorTheme: theme })
-  })
+    body: JSON.stringify({ colorTheme: theme }),
+  });
 
-  console.log(response)
+  console.log(response);
 }
 
 async function createNewEvent(clubID) {
