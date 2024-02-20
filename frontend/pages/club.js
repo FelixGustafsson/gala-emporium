@@ -11,8 +11,8 @@ export default async function club(clubID) {
   for (let data of events) {
     if (data.club === club._id) {
       html += `
-            <li id="club-event-li">
-                <div id="event-info">
+            <li class="club-event-li">
+                <div class="event-info">
                     <h2>${data.name}: ${data.startDate.slice(
         4,
         21
