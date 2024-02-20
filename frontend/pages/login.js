@@ -28,10 +28,10 @@ export default async function login() {
                 <select id="clubList"  style="display:none" name="clubList">${clubList}</select>
                 <input type="submit" value="Create account"/>
             </form>
+            <p id="registration-text"></p>
+            <br>
         </div>
-        <br>
-        <p id="registration-text"></p>
-        <br>
+        
         <div id="login-container">
           <h1>Log in</h1>
             <form id="login-form" onsubmit="newLogin(); return false">
