@@ -27,6 +27,16 @@ export default async function club(clubID) {
           `;
     }
   }
+  switch (club.colorTheme) {
+    case 1:
+      $("body").css("background-color", "rgb(216, 68, 68)");
+      break;
+    case 2:
+      $("body").css("background-color", "rgb(108, 167, 108)");
+      break;
+    case 3:
+      $("body").css("background-color", "rgb(114, 114, 166)");
+  }
 
   return `
     <div id="main-club-container">
@@ -34,7 +44,7 @@ export default async function club(clubID) {
     <div id="club-events-container">
          <ul>${html}</ul>
     </div>
-    <div id="club-info-container-theme-${club.colorTheme}">
+    <div id="club-info-container">
         <h1>${club.name}</h1>
         <br/>
         <p>${club.description}</p>

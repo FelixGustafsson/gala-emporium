@@ -56,32 +56,8 @@
   grid-row: 3/4;
 }
 
-#club-info-container-theme-1 {
-  color: rgb(115, 0, 0);
+#club-info-container {
   width: 40%;
-
-  img {
-    width: 100%;
-    height: 50vh;
-    margin-top: 4rem;
-  }
-}
-
-#club-info-container-theme-3 {
-  color: rgb(0, 38, 115);
-  width: 40%;
-
-  img {
-    width: 100%;
-    height: 50vh;
-    margin-top: 4rem;
-  }
-}
-
-#club-info-container-theme-2 {
-  color: rgb(0, 115, 35);
-  width: 40%;
-
   img {
     width: 100%;
     height: 50vh;
