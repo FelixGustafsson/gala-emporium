@@ -23,8 +23,8 @@
 }
 
 .event-info>h2{
-  font-size: medium;
-  grid-column: 1/3;
+  font-size: large;
+  grid-column: 1/2;
   grid-row: 1/2;
   padding-bottom: 0.5rem;
 }
@@ -33,7 +33,8 @@
   width: 100%;
   height: auto;
   grid-column: 2/3;
-  grid-row: 2/3;
+  grid-row: 1/3;
+  padding-left: 2rem;
 }
 
 .event-info>p{
@@ -43,8 +44,7 @@
 }
 
 .event-info>button {
-  max-width: 75%;
-  justify-self: center;
+  max-width: 100%;
   font-size: small;
   color: white;
   background: black;
@@ -52,7 +52,7 @@
   border: none;
   padding: 0.5rem 2rem;
   margin-top: 1rem;
-  grid-column: 1/3;
+  grid-column: 1/2;
   grid-row: 3/4;
 }
 

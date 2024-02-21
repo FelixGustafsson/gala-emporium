@@ -19,9 +19,9 @@ export default async function club(clubID) {
       )} - ${data.endDate.slice(16, 21)}</h2>
                     <p>${data.description}</p>
                     <img src="${data.imageURL}" alt="'${data.name}' image"/>
-                    <button onclick="bookEvent('${data._id}')">Book ${
-        data.name
-      }</button>
+                    <button onclick="bookEvent('${
+                      data._id
+                    }')">Book ${data.name.slice(0, 20)}...</button>
                 </div>
             </li>
           `;
