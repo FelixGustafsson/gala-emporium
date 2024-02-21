@@ -58,9 +58,10 @@
 
 #club-info-container {
   width: 40%;
-  img {
-    width: 100%;
-    height: 50vh;
-    margin-top: 4rem;
-  }
+}
+
+#club-info-container>img {
+  width: 100%;
+  height: 50vh;
+  margin-top: 4rem;
 }
